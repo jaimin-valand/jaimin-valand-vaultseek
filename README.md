@@ -3,7 +3,7 @@
 ### Private Distributed Search Engine - v3.0.0
 
 [![CI](https://github.com/jaimin-valand/jaimin-valand-vaultseek/actions/workflows/ci.yml/badge.svg)](https://github.com/jaimin-valand/jaimin-valand-vaultseek/actions/workflows/ci.yml)
-[![Release](https://img.shields.io/badge/release-v3.0.0-blue)](https://github.com/jaimin-valand/jaimin-valand-vaultseek/releases/tag/v3.0.0)
+[![Release](https://img.shields.io/badge/release-v3.0.0-blue)](https://github.com/jaimin-valand/jaimin-valand-vaultseek/releases)
 [![Python](https://img.shields.io/badge/python-3.11%2B-blue)](https://www.python.org/)
 [![License](https://img.shields.io/badge/license-MIT-green)](LICENSE)
 
