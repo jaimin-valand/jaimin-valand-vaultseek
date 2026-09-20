@@ -1,0 +1,18 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1400" height="760" viewBox="0 0 1400 760">
+<rect width="1400" height="760" fill="#fff"/>
+<text x="700" y="45" text-anchor="middle" font-family="Arial" font-size="28" font-weight="700">Private Search Engine v3.0 Architecture</text>
+<g font-family="Arial" font-size="17">
+<rect x="50" y="90" width="250" height="90" rx="12" fill="#eef" stroke="#444"/><text x="175" y="125" text-anchor="middle">Client / CLI</text><text x="175" y="152" text-anchor="middle">Search • Crawl • Load Test</text>
+<rect x="390" y="90" width="300" height="90" rx="12" fill="#efe" stroke="#444"/><text x="540" y="125" text-anchor="middle">FastAPI Service</text><text x="540" y="152" text-anchor="middle">Auth • Rate Limit • Lifecycle</text>
+<rect x="780" y="90" width="300" height="90" rx="12" fill="#fee" stroke="#444"/><text x="930" y="125" text-anchor="middle">Query / Crawl Pipeline</text><text x="930" y="152" text-anchor="middle">Parsing • Ranking • Indexing</text>
+<rect x="1170" y="90" width="180" height="90" rx="12" fill="#ffe" stroke="#444"/><text x="1260" y="125" text-anchor="middle">Observability</text><text x="1260" y="152" text-anchor="middle">Trace • Metrics</text>
+<rect x="80" y="290" width="280" height="100" rx="12" fill="#f5f5f5" stroke="#444"/><text x="220" y="325" text-anchor="middle">Index Storage</text><text x="220" y="353" text-anchor="middle">WAL • Segments • Compression</text>
+<rect x="430" y="290" width="280" height="100" rx="12" fill="#f5f5f5" stroke="#444"/><text x="570" y="325" text-anchor="middle">Distributed Retrieval</text><text x="570" y="353" text-anchor="middle">Shards • Fan-out • Top-K</text>
+<rect x="780" y="290" width="280" height="100" rx="12" fill="#f5f5f5" stroke="#444"/><text x="920" y="325" text-anchor="middle">Replication</text><text x="920" y="353" text-anchor="middle">Quorum • Repair • Rebalance</text>
+<rect x="1130" y="290" width="200" height="100" rx="12" fill="#f5f5f5" stroke="#444"/><text x="1230" y="325" text-anchor="middle">Remote RPC</text><text x="1230" y="353" text-anchor="middle">Retry • Circuit Breaker</text>
+<rect x="220" y="500" width="280" height="100" rx="12" fill="#f8f0ff" stroke="#444"/><text x="360" y="535" text-anchor="middle">Consensus</text><text x="360" y="563" text-anchor="middle">Raft-style • Persistence</text>
+<rect x="560" y="500" width="280" height="100" rx="12" fill="#f8f0ff" stroke="#444"/><text x="700" y="535" text-anchor="middle">Fault Injection</text><text x="700" y="563" text-anchor="middle">Drops • Partitions • Healing</text>
+<rect x="900" y="500" width="280" height="100" rx="12" fill="#f8f0ff" stroke="#444"/><text x="1040" y="535" text-anchor="middle">Snapshots</text><text x="1040" y="563" text-anchor="middle">Checksums • Compaction</text>
+<g stroke="#555" stroke-width="3" fill="none"><path d="M300 135 H390"/><path d="M690 135 H780"/><path d="M1080 135 H1170"/><path d="M930 180 V290"/><path d="M540 180 V290"/><path d="M220 390 V500"/><path d="M570 390 V500"/><path d="M920 390 V500"/></g>
+<text x="700" y="680" text-anchor="middle" font-family="Arial" font-size="16">Local-first • deterministic where practical • explicit production limitations</text>
+</g></svg>

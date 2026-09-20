@@ -1,0 +1,22 @@
+# v3.0 Release Checklist
+
+- [x] Version metadata is 3.0.0.
+- [x] Automated test suite passes.
+- [x] Python compilation check passes.
+- [x] Release gate passes.
+- [x] FastAPI lifecycle uses lifespan rather than deprecated startup/shutdown hooks.
+- [x] Security controls documented.
+- [x] Non-root Docker runtime configured.
+- [x] Docker health check configured.
+- [x] Load-test command documented.
+- [x] Demo/interview runbook added.
+- [x] Changelog added.
+- [x] Contribution guidance added.
+- [x] Known limitations documented.
+- [x] MIT license included.
+- [x] Runtime database/cache state excluded from source release.
+- [x] README aligned to VaultSeek v3.0.0.
+- [x] Package metadata contains repository URLs and classifiers.
+- [ ] Build and scan the Docker image in an environment with Docker available.
+- [ ] Publish GitHub release after repository verification.
+- [ ] Attach the release archive and SHA-256 checksum.

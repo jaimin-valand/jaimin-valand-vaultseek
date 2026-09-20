@@ -1,0 +1,4 @@
+[
+  {"url":"https://docs.example/search","title":"Private Search","text":"A private local search engine indexes documents and ranks them with BM25."},
+  {"url":"https://docs.example/index","title":"Inverted Index","text":"An inverted index maps terms to documents and supports efficient lexical retrieval."}
+]

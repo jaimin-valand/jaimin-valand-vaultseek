@@ -1,0 +1,22 @@
+[project]
+name = "private-search-engine"
+version = "3.0.0"
+readme = "README.md"
+license = {file = "LICENSE"}
+keywords = ["search-engine", "information-retrieval", "bm25", "distributed-systems", "python", "private-search"]
+classifiers = ["Programming Language :: Python :: 3", "Programming Language :: Python :: 3 :: Only", "License :: OSI Approved :: MIT License", "Operating System :: OS Independent"]
+
+[project.urls]
+Homepage = "https://github.com/jaimin-valand/jaimin-valand-vaultseek"
+Repository = "https://github.com/jaimin-valand/jaimin-valand-vaultseek"
+Issues = "https://github.com/jaimin-valand/jaimin-valand-vaultseek/issues"
+
+description = "A from-scratch local-first private search engine with crawling, indexing, BM25 ranking, snippets, filters, benchmarking, query profiling, compressed postings, WAL recovery, hybrid retrieval, sharding, parallel query fan-out, global top-K merging, remote shard RPC, retries, circuit breaking, fault-tolerant partial results, quorum consistency, versioned reads, read repair, Raft-style consensus, leader election, replicated logs, durable consensus state, and deterministic network fault injection, consensus snapshots, checksum verification, log compaction, end-to-end search tracing, shard latency telemetry, slow-query diagnostics, and distributed observability."
+requires-python = ">=3.11"
+dependencies = ["fastapi>=0.115,<1", "uvicorn>=0.30,<1"]
+
+[project.optional-dependencies]
+test = ["pytest>=8,<9"]
+
+[tool.pytest.ini_options]
+testpaths = ["private_search_engine/tests"]

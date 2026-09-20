@@ -1,0 +1,5 @@
+[
+  {"query":"private search","relevant":["doc-1"],"k":5},
+  {"query":"machine learning","relevant":["doc-2"],"k":5},
+  {"query":"\"data engineering\"","relevant":["doc-3"],"k":5}
+]
