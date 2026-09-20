@@ -7,7 +7,6 @@ from threading import RLock
 from urllib.error import HTTPError, URLError
 from urllib.request import Request, urlopen
 from http.server import BaseHTTPRequestHandler, ThreadingHTTPServer
-from typing import Iterable
 from ..core.document import Document
 from .sharded import ShardedSearchEngine
 from ..observability import SearchTrace, TraceStore
@@ -63,7 +62,6 @@ class RemoteShardNode:
         raise RuntimeError(str(last))
     def status(self): return RemoteShardHealth(self.node_id,self.url,self.health(),self.breaker.failures,self.breaker.open,self.last_error,self.last_latency_ms).to_dict()
 class RemoteShardCoordinator:
-    """Coordinator for remote shard nodes with retries and circuit breaking."""
     def __init__(self,nodes,max_workers=None,trace_store=None):
         self.nodes=list(nodes)
         if not self.nodes:raise ValueError('at least one remote shard node is required')
@@ -76,14 +74,15 @@ class RemoteShardCoordinator:
             try:
                 with trace.span('shard.search',node_id=node.node_id,query=query,limit=limit): result=node.search(query,min(max(limit*3,limit),1000),domain,content_type,mode,hybrid); return node,result,None
             except Exception as exc:return node,None,exc
-        with trace.span('query.fanout',shard_count=len(healthy),requested_shards=len(self.nodes)):
-            with ThreadPoolExecutor(max_workers=min(self.max_workers,len(healthy) or 1)) as pool:
-                for node,result,error in pool.map(run,healthy):
-                    queried+=1
-                    if error is not None:failed+=1
-                    else:results.extend(result.get('results',[]))
-        with trace.span('result.merge',candidate_hits=len(results),limit=limit): merged=self._merge(results,limit)
-        elapsed=round((time.perf_counter()-started)*1000,4); self.last_trace=trace;self.trace_store.add(trace)
+        with trace.span('query') as root_span:
+            with trace.span('query.fanout',parent_span_id=root_span,shard_count=len(healthy),requested_shards=len(self.nodes)):
+                with ThreadPoolExecutor(max_workers=min(self.max_workers,len(healthy) or 1)) as pool:
+                    for node,result,error in pool.map(run,healthy):
+                        queried+=1
+                        if error is not None:failed+=1
+                        else:results.extend(result.get('results',[]))
+            with trace.span('result.merge',parent_span_id=root_span,candidate_hits=len(results),limit=limit): merged=self._merge(results,limit)
+        elapsed=round((time.perf_counter()-started)*1000,4);self.last_trace=trace;self.trace_store.add(trace)
         self.last_report=RemoteSearchReport(query,len(self.nodes),len(healthy),queried,failed,failed>0,len(results),len(merged),elapsed);return merged
     def health(self): return [node.status() for node in self.nodes]
     def report(self):
